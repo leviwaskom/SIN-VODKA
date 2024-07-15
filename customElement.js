@@ -11,6 +11,7 @@ class CustomElement extends HTMLElement {
           font-family: 'Poppins Semi Bold', sans-serif;
           font-size: 35px;
         }
+
         .dob-input {
           border: none;
           background: transparent;
@@ -19,15 +20,19 @@ class CustomElement extends HTMLElement {
           width: 100px; /* Adjusted width */
           margin: 10px; /* Adjusted margin for even spacing */
           padding: 10px 0; /* Adjusted padding to center the text */
+          font-size: 35px; /* Adjusted font size */
         }
+
         .separator {
           color: white;
           font-size: 35px; /* Ensure separator is the same size */
           margin: 0 5px; /* Adjusted margin for even spacing */
         }
+
         .dob-input::placeholder {
           color: white;
         }
+
         .dob-input:focus {
           outline: none;
         }
@@ -40,27 +45,28 @@ class CustomElement extends HTMLElement {
         <input id="year" type="text" maxlength="4" placeholder="YYYY" class="dob-input" />
         <button id="age-verify-button">I AM 21</button>
       </div>
-    `;
-  }
+      <script>
+        document.getElementById('age-verify-button').addEventListener('click', function() {
+          var month = document.getElementById('month').value;
+          var day = document.getElementById('day').value;
+          var year = document.getElementById('year').value;
+          var today = new Date();
+          var birthDate = new Date(year, month - 1, day);
 
-  connectedCallback() {
-    this.shadowRoot.getElementById('age-verify-button').addEventListener('click', () => {
-      const month = this.shadowRoot.getElementById('month').value;
-      const day = this.shadowRoot.getElementById('day').value;
-      const year = this.shadowRoot.getElementById('year').value;
-      const today = new Date();
-      const birthDate = new Date(year, month - 1, day);
-      let age = today.getFullYear() - birthDate.getFullYear();
-      const m = today.getMonth() - birthDate.getMonth();
-      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-      }
-      if (age >= 21) {
-        window.location.href = 'your-main-site-url-here'; // Replace with your main site URL
-      } else {
-        alert('You must be 21 or older to enter this site.');
-      }
-    });
+          var age = today.getFullYear() - birthDate.getFullYear();
+          var m = today.getMonth() - birthDate.getMonth();
+          if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+          }
+
+          if (age >= 21) {
+            window.location.href = 'your-main-site-url-here'; // Replace with your main site URL
+          } else {
+            alert('You must be 21 or older to enter this site.');
+          }
+        });
+      </script>
+    `;
   }
 }
 
