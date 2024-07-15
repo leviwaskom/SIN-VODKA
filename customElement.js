@@ -1,70 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Age Verification</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="dob-container">
-        <input type="text" maxlength="2" placeholder="MM" id="month" class="dob-input" />
-        <span class="separator"> / </span>
-        <input type="text" maxlength="2" placeholder="DD" id="day" class="dob-input" />
-        <span class="separator"> / </span>
-        <input type="text" maxlength="4" placeholder="YYYY" id="year" class="dob-input" />
-    </div>
-    <button id="age-verify-button">I AM 21</button>
+// HTML code
+const htmlContent = `
+<div class="dob-container">
+  <input type="text" id="month" maxlength="2" placeholder="MM" class="dob-input" />
+  <span class="separator"> / </span>
+  <input type="text" id="day" maxlength="2" placeholder="DD" class="dob-input" />
+  <span class="separator"> / </span>
+  <input type="text" id="year" maxlength="4" placeholder="YYYY" class="dob-input" />
+  <button id="age-verify-button">I AM 21</button>
+</div>
+`;
 
-    <script src="script.js"></script>
-</body>
-</html>
-
-.dob-container {
+// CSS code
+const styleContent = `
+<style>
+  .dob-container {
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: 'Poppins Semi Bold', sans-serif;
-}
+  }
 
-.dob-input {
+  .dob-input {
     border: none;
     background: transparent;
     color: white;
     text-align: center;
     width: 100px; /* Adjusted width */
-    margin: 10px; /* Adjusted margin for even spacing */
+    margin: 0 10px; /* Adjusted margin for even spacing */
     padding: 10px 0; /* Adjusted padding to center the text */
     font-size: 35px; /* Adjusted font size */
-}
+  }
 
-.separator {
+  .separator {
     color: white;
     font-size: 35px; /* Ensure separator is the same size */
     margin: 0 5px; /* Adjusted margin for even spacing */
-}
+  }
 
-.dob-input::placeholder {
+  .dob-input::placeholder {
     color: white;
-}
+  }
 
-.dob-input:focus {
+  .dob-input:focus {
     outline: none;
-}
+  }
+</style>
+`;
 
-button {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 20px;
-    cursor: pointer;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
-
-document.getElementById('age-verify-button').addEventListener('click', function() {
+// JavaScript code
+const scriptContent = `
+<script>
+  document.getElementById('age-verify-button').addEventListener('click', function() {
     var month = document.getElementById('month').value;
     var day = document.getElementById('day').value;
     var year = document.getElementById('year').value;
@@ -78,9 +64,13 @@ document.getElementById('age-verify-button').addEventListener('click', function(
     }
 
     if (age >= 21) {
-        // Code to redirect to the main site or close the lightbox
         window.location.href = 'your-main-site-url-here'; // Replace with your main site URL
     } else {
         alert('You must be 21 or older to enter this site.');
     }
-});
+  });
+</script>
+`;
+
+// Combining HTML, CSS, and JavaScript
+document.write(htmlContent + styleContent + scriptContent);
